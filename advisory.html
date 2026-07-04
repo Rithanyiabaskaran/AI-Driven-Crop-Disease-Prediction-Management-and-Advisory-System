@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>AI Advisory</h2>
+<div class="card">
+  <label>Crop</label>
+  <select disabled>
+    <option>{{ crop_name }}</option>
+  </select>
+</div>
+<div class="grid2">
+  {% for disease, info in crop_map.items() %}
+  <div class="card">
+    <h3>{{ disease }}</h3>
+    <b>Remedy</b>
+    <ul>{% for i in info["remedy"] %}<li>{{ i }}</li>{% endfor %}</ul>
+    <b>Management</b>
+    <ul>{% for i in info["management"] %}<li>{{ i }}</li>{% endfor %}</ul>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

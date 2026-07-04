@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Disease Details</h2>
+<div class="card">
+  <p><b>Crop:</b> {{ pred["crop_name"] }}</p>
+  <p><b>Disease:</b> {{ pred["disease_name"] }}</p>
+  <p><b>Confidence:</b> {{ "%.2f"|format(pred["confidence"]) }}%</p>
+  <p><b>Severity:</b> {{ pred["severity"] }}</p>
+</div>
+<div class="grid2">
+  <div class="card">
+    <h3>Remedy</h3>
+    <ul>{% for i in disease_info["remedy"] %}<li>{{ i }}</li>{% endfor %}</ul>
+  </div>
+  <div class="card">
+    <h3>Management</h3>
+    <ul>{% for i in disease_info["management"] %}<li>{{ i }}</li>{% endfor %}</ul>
+  </div>
+</div>
+{% endblock %}

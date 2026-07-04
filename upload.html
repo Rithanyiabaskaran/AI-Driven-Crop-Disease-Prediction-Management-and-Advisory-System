@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="upload-wrapper">
+    <div class="upload-card">
+        <h2>Upload & Predict</h2>
+        <p class="subtitle">Upload a crop image and get disease prediction.</p>
+
+        <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+            <label for="crop_name">Select Crop</label>
+            <select name="crop_name" id="crop_name" required>
+                <option value="">-- Select Crop --</option>
+                {% for crop in crops %}
+                <option value="{{ crop }}">{{ crop }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="file">Choose Image</label>
+            <input type="file" name="file" id="file" accept="image/*" required>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Prediction Result</h2>
+<div class="card">
+  <img class="result-image" src="{{ url_for('upload_file', filename=pred.image_name) }}">
+  <p><b>Crop:</b> {{ pred["crop_name"] }}</p>
+  <p><b>Disease:</b> {{ pred["disease_name"] }}</p>
+  <p><b>Confidence:</b> {{ "%.2f"|format(pred["confidence"]) }}%</p>
+  <p><b>Severity:</b> {{ pred["severity"] }}</p>
+  <a class="btn" href="{{ url_for('details', prediction_id=pred['id']) }}">View Details</a>
+  <a class="btn" href="{{ url_for('advisory', crop_name=pred['crop_name']) }}">Advisory</a>
+</div>
+{% endblock %}

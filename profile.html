@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Profile</h2>
+<div class="grid2">
+  <div class="card">
+    <form method="POST">
+      <label>Full Name</label>
+      <input type="text" name="full_name" value="{{ user['full_name'] }}">
+      <label>Email</label>
+      <input type="email" name="email" value="{{ user['email'] }}">
+      <label>Phone</label>
+      <input type="text" name="phone" value="{{ user['phone'] }}">
+      <button type="submit">UPDATE PROFILE</button>
+    </form>
+  </div>
+  <div class="card">
+    <p><b>Role:</b> {{ user["role"] }}</p>
+    <p><b>Username:</b> {{ user["username"] }}</p>
+  </div>
+</div>
+{% endblock %}

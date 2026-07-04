@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+
+<div class="stats">
+  <div class="stat">Total Crops<br><strong>{{ total_crops }}</strong></div>
+  <div class="stat">Total Predictions<br><strong>{{ total_predictions }}</strong></div>
+  <div class="stat">Active Alerts<br><strong>{{ active_alerts }}</strong></div>
+  <div class="stat">Recommendations<br><strong>{{ recommendations }}</strong></div>
+</div>
+
+<div class="card">
+  <h3>Upload Image</h3>
+  <a href="{{ url_for('upload_file') }}" class="btn btn-primary">Go to Upload</a>
+</div>
+
+<div class="card">
+  <h3>Recent Predictions</h3>
+  <table>
+    <tr>
+      <th>Crop</th>
+      <th>Disease</th>
+      <th>Confidence</th>
+      <th>Severity</th>
+    </tr>
+    {% for p in recent_predictions %}
+    <tr>
+      <td>{{ p["crop_name"] }}</td>
+      <td>{{ p["disease_name"] }}</td>
+      <td>{{ "%.2f"|format(p["confidence"]) }}%</td>
+      <td>{{ p["severity"] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

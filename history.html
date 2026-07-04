@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>History</h2>
+<div class="card">
+  <table>
+    <tr><th>Crop</th><th>Disease</th><th>Confidence</th><th>Severity</th><th>Image</th></tr>
+    {% for p in predictions %}
+    <tr>
+      <td>{{ p["crop_name"] }}</td>
+      <td>{{ p["disease_name"] }}</td>
+      <td>{{ "%.2f"|format(p["confidence"]) }}%</td>
+      <td>{{ p["severity"] }}</td>
+      <td>{{ p["image_name"] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
